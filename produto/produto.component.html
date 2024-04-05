@@ -1,0 +1,25 @@
+<div style="background-color: #cabdbd; padding: 20px; display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100vh;">
+  <div style="background-color: #928787c0; padding: 20px; display: flex; flex-direction: column;">
+    <h4 style="text-align: center; margin-bottom: 20px;">Cadastro de Animal</h4>
+    <form [formGroup]="produtoForm" (submit)="salvar()">
+      <div class="mb-3">
+        <label for="nome" class="form-label">Nome</label>
+        <input type="text" class="form-control" id="nome" placeholder="Digite o nome do animal..." style="border-radius: 10px;" formControlName="nome" required>
+        <div class="alert alert-danger" role="alert" *ngIf="produtoForm?.get('nome')?.invalid && buttonClicked" style="border-radius: 10px; margin-top: 5px;">
+          Nome inválido
+        </div>
+      </div>
+
+      <div class="mb-3">
+        <label for="especie" class="form-label">Espécie</label>
+        <select class="form-control" id="especie" formControlName="especie" style="border-radius: 10px;" required>
+          <option value="cachorro">Cachorro</option>
+          <option value="gato">Gato</option>
+          <option value="pássaro">Pássaro</option>
+        </select>
+      </div>
+
+      <button type="submit" class="btn btn-primary btn-block" style="border-radius: 20px; padding: 10px; margin-top: 20px;">Salvar</button>
+    </form>
+  </div>
+</div>

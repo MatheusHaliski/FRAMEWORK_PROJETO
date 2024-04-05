@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modal Table</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+    <table class="table table-bordered table-hover">
+        <thead>
+          <tr>
+            <th scope="col">Código</th>
+            <th scope="col">Nome</th>
+            <th scope="col">Espécie</th>
+            <th scope="col"></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let produto of produtos">
+            <th scope="row">{{ produto.codigo }}</th>
+            <td>{{ produto.nome }}</td>
+            <td>{{ produto.especie }}</td>
+            <td>
+              <button (click)="openModal()">Agendar Visita</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      
+      <div #myModal class="modal">
+        <div class="modal-content">
+          <span class="close" (click)="closeModal()">&times;</span>
+          <h2>Agende uma visita ao seu novo Pet!</h2>
+          <form class="form-container">
+            <label for="data">Data:</label>
+            <input type="date" id="data" name="data">
+            
+            <label for="hora">Hora:</label>
+            <input type="time" id="hora" name="hora">
+            
+            <button type="submit">Agendar</button>
+          </form>
+        </div>
+      </div>
+      
+</body>
+</html>
+ <!-- Bootstrap JavaScript -->
+ <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+ <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+ <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+ <!-- Custom JavaScript -->
+ <script>
+     function displayModal(modalId) {
+         $('#' + modalId).modal('show');
+         console.log('clicado22');
+     }
+ </script>
