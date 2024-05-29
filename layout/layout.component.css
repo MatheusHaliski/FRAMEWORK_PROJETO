@@ -2,73 +2,100 @@
 
 /* Estilos para o cabeçalho */
 header {
-    background-color: #9596bd;
-    color: #886cc9;
-    padding: 0px;
-  }
-.nav-link,.n1{
-  position: absolute;
-  top:0px;
-  left:200px;
-  width:100px;
-  height:60px;
-  padding-top: 0px;
-}
-#navbarNavDropdown{
-  height: 100%;
-}
-.n2{
-  position: absolute;
-  left:400px;
-  margin-bottom: 10px;
-}
-.container-fluid{
-  height: 91px;
   background-color: #9596bd;
-  color: #886cc9;
-  padding: 10px;
+  color: #6a4cb1;
+  padding: 0px;
 }
-  /* Estilos para a barra lateral */
-  aside {
-    background-color: #f4f4f4;
-    width: 200px;
-    padding: 10px;
-    float: left;
+
+.container-fluid {
+  background-color: #366fc5;
+}
+a:hover{
+  background-color: #ffffff;
+}
+/* Estilos para as âncoras e dropdowns */
+.nav-link, .dropdown-toggle {
+  position: relative; /* Mudança para 'relative' */
+  height: 90px;
+  width: 200px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #9596BD;
+  transition: background-color 0.3s; /* Transição suave da cor de fundo */
+}
+
+/* Efeito de hover */
+.nav-link:hover, .dropdown-toggle:hover {
+  background-color: #ffffff; /* Altera a cor de fundo para branco ao passar o mouse */
+  color: #000000; /* Altera a cor do texto para preto ao passar o mouse */
+}
+
+/* Alinhamento dos botões na barra de navegação */
+.nav-item.dropdown:nth-child(1) .nav-link,
+.nav-item.dropdown:nth-child(2) .nav-link {
+  position: relative;
+  left: 340px; /* Alinha os botões à direita */
+}
+
+.navbar-nav .dropdown-menu {
+  background-color: #9596BD;
+  position: absolute;
+  top: 100%; /* Aparecer abaixo do botão */
+  left: 340px;
+  width: 200px; /* Largura igual à dos botões */
+}
+
+.dropdown-menu .dropdown-item {
+  width: 100%; /* Largura total para preencher o contêiner */
+}
+
+.dropdown-menu .dropdown-item .dropdown-toggle {
+  position: static; /* Restaurar para a posição padrão */
+}
+@media (max-width: 991.98px) {
+  .nav-item.dropdown:nth-child(1) .nav-link,
+  .nav-item.dropdown:nth-child(2) .nav-link {
+    left: auto; /* Remover o alinhamento à direita */
   }
   
-  nav ul {
-    list-style-type:none;
-    padding: 0;
+  .navbar-nav .dropdown-menu {
+    top: 90px; /* Ajustar a posição vertical */
+    left: 50%; /* Centralizar horizontalmente */
+    transform: translateX(-50%);
   }
-  
-  nav ul li {
-    margin-bottom: 75px;
-    text-align: center;
-    width: 100%;
-  }
-  
-  nav ul li a {
-    margin-top: 0px;
-    height: 30px;
-    border: solid 1px #000;
-    color: #333;
-    text-decoration:none;
-  }
-  #a1,#a2{
-    position: relative;
-    top:50px;
-  }
-  nav ul li a:hover {
-    color: #000;
-  }
-  
-  /* Estilos para a área de conteúdo principal */
-  .main-content {
-    margin-left: 110px; /* Considerando a largura da barra lateral e alguma margem */
-    padding: 0px;
-  }
-  
-  .container {
-    margin: 0 auto;
-    width: 80%; /* Largura do conteúdo principal */
-  }
+  /* Alinhamento dos botões na barra de navegação */
+.nav-item.dropdown:nth-child(1) .nav-link,
+.nav-item.dropdown:nth-child(2) .nav-link {
+  position: relative;
+}
+
+.navbar-nav .dropdown-menu {
+  background-color: #9596BD;
+  position: absolute;
+  top: calc(100% + 10px); /* Ajusta a posição para baixo */
+  left: 20%; /* Centraliza horizontalmente */
+  transform: translateX(-50%);
+  width: 200px;
+}
+#drp2 {
+  background-color: #9596BD;
+  position: absolute;
+  top: calc(100% + 10px); /* Ajusta a posição para baixo */
+  left: 20%; /* Centraliza horizontalmente */
+  transform: translateX(-50%);
+  width: 200px;
+}
+#drp1 {
+  background-color: #9596BD;
+  position: absolute;
+  top: calc(100% + 10px); /* Ajusta a posição para baixo */
+  left: 50%; /* Centraliza horizontalmente */
+  transform: translateX(-50%);
+  width: 200px;
+}
+.dropdown-menu .dropdown-item {
+  width: 100%;
+}
+}
+
