@@ -1,0 +1,18 @@
+<div style="background-image: url('assets/bd6.jpg'); background-size: cover; background-position: center; padding: 20px; display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100vh;">
+  <div style="background-color: rgba(146, 135, 135, 0.75); padding: 20px; display: flex; flex-direction: column; border-radius: 15px;">
+    <h4 style="text-align: center; margin-bottom: 20px;">Registre-se no Pet Amigo!</h4>
+    <form (ngSubmit)="register()" style="display: flex; flex-direction: column; align-items: center;">
+      <div class="mb-3" style="width: 100%;">
+        <label for="email" class="form-label">Email</label>
+        <input type="email" class="form-control" id="email" name="email" [(ngModel)]="email" placeholder="Digite seu email..." style="border-radius: 10px; background-color: rgba(255, 255, 255, 0.8);" required>
+      </div>
+
+      <div class="mb-3" style="width: 100%;">
+        <label for="password" class="form-label">Password</label>
+        <input type="password" class="form-control" id="password" name="password" [(ngModel)]="password" placeholder="Digite sua senha..." style="border-radius: 10px; background-color: rgba(255, 255, 255, 0.8);" required>
+      </div>
+
+      <button type="submit" class="btn btn-primary" style="border-radius: 20px; padding: 10px; margin-top: 20px; width: 100px;">Register</button>
+    </form>
+  </div>
+</div>
