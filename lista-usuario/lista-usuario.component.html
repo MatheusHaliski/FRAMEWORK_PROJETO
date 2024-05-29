@@ -1,48 +1,47 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<link rel="stylesheet" href="lista-usuario.component.css">
-</head>
-<body>
 <table class="table table-bordered table-hover">
     <thead>
-        <tr>
-            <th colspan="8" style="text-align: center;">LISTA DE AGENDAMENTOS</th>
-        </tr>
-        <tr>
-            <th scope="col">Código</th>
-            <th scope="col">Nome</th>
-            <th scope="col">Número Celular</th>
-            <th scope="col"> Agendamento</th>
-            <th scope="col"> Nome do Animal</th>
-            <th scope="col">Espécie</th>]
-            <th scope="col">DELETAR AGENDAMENTO</th>
-        </tr>
+      <tr>
+        <th scope="col">ID</th>
+        <th scope="col">Nome</th>
+        <th scope="col">DataNascimento</th>
+        <th scope="col">Agendamentos</th>
+        <th scope="col"></th> <!-- Coluna para o botão de exclusão -->
+      </tr>
     </thead>
     <tbody>
-        <tr>
-            <th scope="row">1</th>
-            <td>Matheus</td>
-            <td>+55 41 998136766</td>
-            <td><button class="btn btn-warning">Editar</button></td>
-            <td></td>
-            <td></td>
-        </tr>
-        <tr>
-            <th scope="row">2</th>
-            <td>Bryan</td>
-            <td>+55 41 987243502</td>
-            <td><button class="btn btn-warning">Editar</button></td>
-        </tr>
-        <tr>
-            <th scope="row">3</th>
-            <td>Stephanny</td>
-            <td>+55 41 999360790</td>
-            <td><button class="btn btn-warning">Editar</button></td>
-        </tr>
+      <tr *ngFor="let usuario of usuarios">
+        <th scope="row">{{ usuario.key }}</th>
+        <td>{{ usuario.nome }}</td>
+        <td>{{ usuario.dataNascimento }}</td>
+        <td>
+            <ul>
+              <li *ngFor="let agendamento of usuario.agendamentos">
+                Nome:{{ agendamento.nome }},Produto ID: {{ agendamento.produtoId }}, Data de Visita: {{ agendamento.dataVisita }}, Hora de Visita: {{ agendamento.horaVisita }}
+              </li>
+            </ul>
+          </td>
+        <td>
+          <button (click)="openModalEditar(usuario)">Editar</button> <!-- Passa o usuário para a função -->
+        </td>
+        <td>
+          <button (click)="excluirUsuario(usuario.key)">Excluir</button> <!-- Botão de exclusão -->
+        </td>
+      </tr>
     </tbody>
-</table>
-
-</body>
-</html>
-
+  </table>
+  <div #modalEditar id="modalEditar" class="modal">
+    <div class="modal-content">
+      <span class="close" (click)="closeModalEditar()">&times;</span>
+      <h2>Editar Usuário</h2>
+      <div>
+        <label for="editNome">Nome:</label>
+        <input type="text" id="editNome" [(ngModel)]="usuarioEditado.nome">
+      </div>
+      <div>
+        <label for="editAgendamento">Data de Nascimento:</label>
+        <input type="text" id="editAgendamento" [(ngModel)]="usuarioEditado.dataNascimento">
+      </div>
+      <button (click)="salvarEdicao()">Salvar</button>
+    </div>
+  </div>
+  
