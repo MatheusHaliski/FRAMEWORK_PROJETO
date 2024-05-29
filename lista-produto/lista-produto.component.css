@@ -91,4 +91,24 @@ p {
   .form-container button:hover {
     background-color: #45a049;
   }
-  
+  @media screen and (max-width: 600px) {
+    table {
+      font-size: 12px;
+    }
+    
+    th, td {
+      padding: 6px;
+    }
+    
+    .modal {
+      width: 90%;
+      max-width: 90%;
+    }
+    
+    .form-container input[type="text"],
+    .form-container input[type="email"],
+    .form-container input[type="date"],
+    .form-container button {
+      width: 90%;
+    }
+  }

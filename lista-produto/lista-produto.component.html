@@ -1,59 +1,75 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Modal Table</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-</head>
-<body>
-    <table class="table table-bordered table-hover">
-        <thead>
-          <tr>
-            <th scope="col">Código</th>
-            <th scope="col">Nome</th>
-            <th scope="col">Espécie</th>
-            <th scope="col"></th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr *ngFor="let produto of produtos">
-            <th scope="row">{{ produto.codigo }}</th>
-            <td>{{ produto.nome }}</td>
-            <td>{{ produto.especie }}</td>
-            <td>
-              <button (click)="openModal()">Agendar Visita</button>
-            </td>
-          </tr>
-        </tbody>
-      </table>
-      
-      <div #myModal class="modal">
-        <div class="modal-content">
-          <span class="close" (click)="closeModal()">&times;</span>
-          <h2>Agende uma visita ao seu novo Pet!</h2>
-          <form class="form-container">
-            <label for="data">Data:</label>
-            <input type="date" id="data" name="data">
-            
-            <label for="hora">Hora:</label>
-            <input type="time" id="hora" name="hora">
-            
-            <button type="submit">Agendar</button>
-          </form>
-        </div>
-      </div>
-      
-</body>
-</html>
- <!-- Bootstrap JavaScript -->
- <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
- <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
- <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
- <!-- Custom JavaScript -->
- <script>
-     function displayModal(modalId) {
-         $('#' + modalId).modal('show');
-         console.log('clicado22');
-     }
- </script>
+<table class="table table-bordered table-hover">
+  <thead>
+    <tr>
+      <th scope="col">Código</th>
+      <th scope="col">Nome</th>
+      <th scope="col">Espécie</th>
+      <th scope="col">Foto do PET</th>
+      <th scope="col">Editar</th> 
+      <th scope="col">Agendar Visita</th> 
+      <th scope="col">Excluir PET</th> 
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let produto of produtos">
+      <th scope="row">{{ produto.key }}</th>
+      <td>{{ produto.nome }}</td>
+      <td>{{ produto.especie }}</td>
+      <td>
+        <img [src]="produto.imagemUrl" alt="Imagem do pet" width="100" height="100">
+      </td>
+      <td>
+        <button (click)="openModalEditar(produto)">Editar</button> <!-- Passa o produto para a função -->
+      </td>
+      <td>
+        <button (click)="openModalAgendar(produto)">Agendar</button> <!-- Passa o produto para a função -->
+      </td>
+      <td>
+        <button (click)="excluirProduto(produto.key)">Excluir</button> <!-- Botão de exclusão -->
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<div #modalEditar id="modalEditar" class="modal">
+  <div class="modal-content">
+    <span class="close" (click)="closeModalEditar()">&times;</span>
+    <h2>Editar Produto</h2>
+    <div>
+      <label for="editNome">Nome:</label>
+      <input type="text" id="editNome" [(ngModel)]="produtoEditado.nome">
+    </div>
+    <div>
+      <label for="editEspecie">Espécie:</label>
+      <input type="text" id="editEspecie" [(ngModel)]="produtoEditado.especie">
+    </div>
+    <button (click)="salvarEdicao()">Salvar</button>
+  </div>
+</div>
+
+<div #modalAgendar id="modalAgendar" class="modal">
+  <div class="modal-content">
+    <span class="close" (click)="closeModalAgendar()">&times;</span>
+    <h2>Agendar Visita</h2>
+    <!-- Adicione os campos necessários para o agendamento -->
+    <div>
+      <label for="nome">Nome do PET:</label>
+      <input type="text" id="nome" [(ngModel)]="nome" [value]="produtoEditado.nome">
+    </div>
+    
+    <div>
+      <label for="dataVisita">Data da Visita:</label>
+      <input type="date" id="dataVisita" [(ngModel)]="dataVisita">
+    </div>
+    <div>
+      <label for="horaVisita">Hora da Visita:</label>
+      <input type="time" id="horaVisita" [(ngModel)]="horaVisita">
+    </div>
+    <div>
+      <label for="idUsuario">ID do Usuário:</label>
+      <input type="text" id="idUsuario" [(ngModel)]="idUsuario">
+    </div>
+    
+    <button (click)="confirmarAgendamento()">Agendar</button>
+  </div>
+</div>
