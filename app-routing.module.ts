@@ -7,8 +7,9 @@ import { LoginComponent } from './login/login.component';
 import { ProdutoComponent } from './produto/produto.component';
 import { UsuarioComponent } from './usuario/usuario.component';
 import { ModalComponent } from './modal/modal.component';
+import { RegisterComponent } from './register/register.component';
 const routes: Routes = [
-  { path: '', redirectTo: '/login', pathMatch: 'full' }, 
+  { path: '', redirectTo: 'login', pathMatch: 'full' }, 
   {
     path: 'layout',
     component: LayoutComponent,
@@ -17,7 +18,9 @@ const routes: Routes = [
       { path: 'produto', component: ProdutoComponent },
       { path: 'lista-produto', component: ListaProdutoComponent },
       { path: 'lista-usuario', component: ListaUsuarioComponent },
-      { path: 'modal', component: ModalComponent }
+      { path: 'modal', component: ModalComponent },
+      { path: 'login', component: LoginComponent },
+      { path: 'register', component: RegisterComponent }
     ]
   },
   { path: 'login', component: LoginComponent }

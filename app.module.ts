@@ -15,7 +15,11 @@ import { ListaUsuarioComponent } from './lista-usuario/lista-usuario.component';
 import { ListaProdutoComponent } from './lista-produto/lista-produto.component';
 import { ModalComponent } from './modal/modal.component';
 import { environment } from '../environments/environment';
-import { ReactiveFormsModule } from '@angular/forms'; // 
+import { ReactiveFormsModule } from '@angular/forms'; 
+import { ProdutoService } from './produto.service';
+import { ServiceComponent } from './service/service.component'; 
+import { AngularFireAuthModule } from '@angular/fire/compat/auth';
+import { RegisterComponent } from './register/register.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -25,7 +29,9 @@ import { ReactiveFormsModule } from '@angular/forms'; //
     LoginComponent,
     ListaUsuarioComponent,
     ListaProdutoComponent,
-    ModalComponent
+    ModalComponent,
+    ServiceComponent,
+    RegisterComponent
   ],
   imports: [
     BrowserModule,
@@ -35,9 +41,11 @@ import { ReactiveFormsModule } from '@angular/forms'; //
     RouterModule,
     AngularFireModule.initializeApp(environment.firebaseConfig),
     FirestoreModule,
+    AngularFireAuthModule
   ],
   providers: [
-    provideClientHydration()
+    provideClientHydration(),
+    ProdutoService 
   ],
   bootstrap: [AppComponent]
 })
